@@ -1,8 +1,6 @@
 import requests
 import hashlib
 
-source_password_file = 'password_source.txt'
-
 
 def request_api_data(query_char):
     url = 'https://api.pwnedpasswords.com/range/' + query_char
@@ -30,7 +28,7 @@ def pwned_api_check(password):
 
 def main():
     try:
-        with open('venv/password_source.txt', 'r') as file:
+        with open('password_leak_checker/password_source.txt', 'r') as file:
             for password in file.read().splitlines():
                 count = pwned_api_check(password)
                 if count:
